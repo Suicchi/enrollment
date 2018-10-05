@@ -1,0 +1,149 @@
+﻿@model Enrollment.Areas.Admin.Models.Student
+
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add New Student";
+}
+
+
+    <div>
+        <h1 style="color:white">Student Information System</h1>
+        <h2>Enter Student Information</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @(ViewBag.SuccessMessage ?? "")
+
+        <table align="center" cellpadding="10">
+            <tr>
+
+
+                <td>
+                    @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    <!--<input type="text" placeholder="Name" name="" maxlength="30" />(max 30 characters a-z and A-Z)-->
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Father's Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.FathersName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FathersName, "", new { @class = "text-danger" })
+                    @*<!--<input type="text" placeholder="Father's Name" name="" maxlength="30" />-->(max 30 characters a-z and A-Z)*@
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mother's Name :
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.MothersName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MothersName, "", new { @class = "text-danger" })
+                    @*<!--<input type="text" placeholder="Mother's Name" name="" maxlength="30" />-->(max 30 characters a-z and A-Z)*@
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender :
+                </td>
+                <td>
+                    @Html.RadioButtonFor(model => model.Gender, "Male", htmlAttributes: new { @class = "form-control" })
+                    @Html.Label("Male", htmlAttributes: new { @class = "" })
+                    @Html.RadioButtonFor(model => model.Gender, "Female", htmlAttributes: new { @class = "form-control" })
+                    @Html.Label("Female", htmlAttributes: new { @class = "" })
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                    <!--<input type="radio" name="Gender" />Male
+            <input type="radio" name="Gender" />Female
+            <input type="radio" name="Gnder" />Other-->
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Present Address", htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.PresentAddress, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PresentAddress, "", new { @class = "text-danger" })
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.Label("Permanent Address", htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.PermanentAddress, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PermanentAddress, "", new { @class = "text-danger" })
+                    <!--<input type="text" placeholder="Present address" name="" />-->
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Date of Birth", htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.DateofBirth, new { @class = "form-control datepicker", placeholder = "Enter Birth date here...", type = "date" })
+                    @Html.ValidationMessageFor(model => model.DateofBirth, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    @Html.LabelFor(model => model.Religion, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Religion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Religion, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Admission Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.AdmissionDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                    @Html.ValidationMessageFor(model => model.AdmissionDate, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" class="btn btn-default" /></td>
+            </tr>
+        </table>
+
+        }
+
+    </div>
+
+
+

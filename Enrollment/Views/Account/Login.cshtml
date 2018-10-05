@@ -1,0 +1,63 @@
+﻿@model Enrollment.Models.Account
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/TransparentLogin/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="~/TransparentLogin/css/all.min.css">
+    <link rel="stylesheet" href="~/TransparentLogin/css/style.css">
+    <script src="~/TransparentLogin/js/all.min.js"></script>
+    <script src="~/TransparentLoginjs/bootstrap.min.js"></script>
+    <title>Log In | Admin</title>
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+    <div class="login-box">
+        <p class="p">Please Log In to Access <br /> Student Information System</p>
+
+        @* Username input field *@
+        <div class="textbox">
+            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger font-small" })
+            <br />
+            <i class="fa fa-user " aria-hidden="true"></i>
+            @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "" })
+
+            @*<input type="text" placeholder="Username" name="" id="">*@
+        </div>
+
+        @* Password input field *@
+        <div class="textbox">
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger font-small" })
+            <br />
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            @Html.PasswordFor(model => model.Password, new { placeholder = "Password" })
+
+
+            @*<input type="password" placeholder="Password" name="" id="">*@
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        @* Log in button *@
+        <input type="submit" class="btn btn-success" value="Sign In">
+    </div>
+
+    }
+
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿
+
+@{
+
+    var admin = Session["User"] as Enrollment.Models.Account;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    @*<link rel="stylesheet" href="~/TransparentLogin/css/bootstrap.css" />
+    <script src="~/TransparentLogin/js/bootstrap.js"></script>*@
+    <link rel="stylesheet" href="~/Areas/Admin/EmaContrib/StyleSheet.css" />
+
+    <title>@ViewBag.Title</title>
+
+</head>
+<body background="~/Areas/Admin/EmaContrib/img/cloud.jpg">
+    <div>
+        @*<h1 style="color:white">Student Enrollment System</h1>*@
+        <ul>
+            @{
+                if (admin != null)
+                {
+                    <li>@Html.Label($"Welcome {@admin.Username}", htmlAttributes: new { @class = "text-white welcome" })</li>
+                    <li>@Html.ActionLink("View records", "Index")</li>
+                    @*<li><a href="Viewrecord.html">View Record</a></li>*@
+                    <li>@Html.ActionLink("Add New Entry", "Add")</li>
+                    <li>@Html.ActionLink("About", "About")</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, htmlAttributes: new { @class = "text-white" })</li>
+                }
+            }
+
+
+        </ul>
+        @RenderBody()
+        <footer class="text-white" align="center">
+            <p>&copy; @DateTime.Now.Year CSE 2014-15 Team A</p>
+        </footer>
+    </div>
+    
+</body>
+</html>
